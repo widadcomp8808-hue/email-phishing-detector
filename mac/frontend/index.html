@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Email Phishing Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Email Phishing Analyzer</h1>
+      <p>Upload an email file or paste the raw message to classify it.</p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Analyze Raw Message</h2>
+        <form id="text-form">
+          <label for="subject">Subject (optional)</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="Subject line"
+          />
+
+          <label for="headers">Raw headers (optional)</label>
+          <textarea
+            id="headers"
+            name="headers"
+            rows="4"
+            placeholder="Paste message headers here"
+          ></textarea>
+
+          <label for="body">Email body</label>
+          <textarea
+            id="body"
+            name="body"
+            rows="10"
+            placeholder="Paste the full email body (HTML or plain text)"
+            required
+          ></textarea>
+
+          <button type="submit">Analyze Text</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Analyze .eml File</h2>
+        <form id="file-form">
+          <input type="file" id="file" name="file" accept=".eml" required />
+          <button type="submit">Upload and Analyze</button>
+        </form>
+      </section>
+
+      <section class="card" id="results-card" hidden>
+        <h2>Analysis Result</h2>
+        <div id="result-verdict"></div>
+        <div id="result-confidence"></div>
+        <div id="result-highlights"></div>
+        <div id="result-insights"></div>
+        <div id="result-metadata"></div>
+      </section>
+
+      <section class="card" id="error-card" hidden>
+        <h2>Request Error</h2>
+        <pre id="error-message"></pre>
+      </section>
+    </main>
+
+    <footer>
+      <small>Prototype build &mdash; replace heuristic model with ML model later.</small>
+    </footer>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
+
